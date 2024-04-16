@@ -7,9 +7,21 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
 
+    private int health = 3;
+
     private bool isMoving;
 
     private Vector2 input;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            health--;
+            // print debug message
+            Debug.Log("Player health: " + health);
+        }
+    }
 
     private void Update()
     {
